@@ -10,10 +10,11 @@
         width: 250px;
         border:  tomato 1px solid;
       }
-      #tile {
+      .tile {
         height: 49px;
         width: 250px;
-        text-align: center; /*this is not working */
+        text-align: center;
+        line-height: 49px; /*need this to center > < text same as height*/
         vertical-align: center;
         background-color: blue;
         border: black 1px solid;
@@ -27,39 +28,42 @@
         width: 250px;
         /* background-color: teal; */
       }
+      .selected {
+        background-color: teal;
+      }
     </style>
   </head>
   <body>
     <h1>Acme First, Second, Third</h1>
     <div id='lists'>
       <div id='first' class='holder'>
-        <div id='tile' class='toLeft'><</div>
-        <div id='tile' class='toRight'>></div>
+        <div class='tile' class='toLeft'><</div>
+        <div class='tile' class='toRight'>></div>
         <div class='rank'>FIRST</div>
-        <div id='tile' class='name'></div>
-        <div id='tile' class='name'></div>
-        <div id='tile' class='name'></div>
-        <div id='tile' class='name'></div>
+        <div class='tile' class='name'></div>
+        <div class='tile' class='name'></div>
+        <div class='tile' class='name'></div>
+        <div class='tile' class='name' class='selected'></div>
       </div>
-      <div id='second' class='holder'>
+       <div id='second' class='holder'>
 
-          <div id='tile' class='toLeft'><</div>
-          <div id='tile' class='toRight'>></div>
+          <div class='tile' class='toLeft'><</div>
+          <div class='tile' class='toRight'>></div>
           <div class='rank'>SECOND</div>
-          <div id='tile' class='name'></div>
-          <div id='tile' class='name'></div>
-          <div id='tile' class='name'></div>
-          <div id='tile' class='name'></div>
+          <div class='tile' class='name'></div>
+          <div class='tile' class='name'></div>
+          <div class='tile' class='name'></div>
+          <div class='tile' class='name'></div>
       </div>
       <div id='third'class='holder'>
 
-          <div id='tile' class='toLeft'><</div>
-          <div id='tile' class='toRight'>></div>
-          <div class='rank'>  THIRD</div>
-          <div id='tile' class='name'></div>
-          <div id='tile' class='name'></div>
-          <div id='tile' class='name'></div>
-          <div id='tile' class='name'></div>
+          <div class='tile' class='toLeft'><</div>
+          <div class='tile' class='toRight'>></div>
+          <div class='rank'>THIRD</div>
+          <div class='tile' class='name'></div>
+          <div class='tile' class='name'></div>
+          <div class='tile' class='name'></div>
+          <div class='tile' class='name'></div>
       </div>
     </div>
   <script>
@@ -71,6 +75,27 @@
       { id: 3, name: 'curly', slot: 'third' },
       { id: 4, name: 'lucy', slot: 'third' , selected: true},
     ];
+
+    const array1 = [];
+    const array2 = [];
+    const array3 = [];
+
+    for (let i = 0; i < users.length; i++) {
+      let person = users[i];
+      if (person.slot === 'first') {
+        array1.push(person.name); // will push the person obj. just using name for testing
+      }
+      if (person.slot === 'second') {
+        array2.push(person.name);
+      }
+      if (person.slot === 'third') {
+        array3.push(person.name);
+      }
+    }
+    console.log(array1);
+    console.log(array2);
+    console.log(array3);
+
     </script>
   </body>
 </html>
