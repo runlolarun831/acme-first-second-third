@@ -59,6 +59,7 @@
         /* background-color: teal; */
       }
       li {
+        list-style-type: none;
         font-size: 20px;
         font-weight: bold;
         height: 49px;
@@ -81,7 +82,7 @@
         <div id='first' class='holder'>
           <div class='dead'><</div>
           <button class='toRight'>></button>
-          <ul class="nameList"> FIRST
+          <ul> FIRST
             <li>moe</li>
           </ul>
         </div>
@@ -89,7 +90,7 @@
 
            <button class='toLeft'><</button>
            <button class='toRight'>></button>
-           <ul class="nameList">SECOND
+           <ul>SECOND
             <li>larry</li>
             </ul>
        </div>
@@ -98,26 +99,27 @@
            <div class='dead'>></div>
            <ul>THIRD
              <li>curly</li>
-            <li>lucy</li>
+             <li class='selected'>lucy</li>
        </div>
      </div>
    <script>
-     //const name = document.querySelectorAll('nameList');
-     const name = document.getElementsByClassName('nameList');// want to get all names
+     const name = document.getElementsByTagName('li');// want to get all names
 
-    console.log(name);
-
-      // create addEventListener name
+     console.log(name); //console result: HTMLCollection(4) [li, li, li, li.selected]
+    // create addEventListener  for name
       name.addEventListener('click', (ev) => {
-        console.log('I clicked it!');//this works in console
-     // if (!(name.getAttribute('selected'))) {
-    //     name.setAttribute('selected', 'selected');
-    //     ////????i think I modify the users list with added key and value???
-    //   }
-    //   else {
-    //     name.removeAttribute('selected');
-    //   }
-    });
+        const person = ev.target;
+        console.log(person);
+        if (!(person.getAttribute('selected'))) {
+          person.setAttribute('selected', 'selected');
+          //????i think I modify the users array with added key and value???
+        }
+        else {
+          name.removeAttribute('selected');
+          //????i think I modify the users list by removing key 'selected' from users array
+        }
+      }
+      );
 
      const slots = ['first', 'second', 'third'];
 
