@@ -78,48 +78,45 @@
    <body>
      <h1>Acme First, Second, Third</h1>
      <div id='lists'>
-       <div id='first' class='holder'>
-         <div class='dead'><</div>
-         <button class='toRight'>></button>
-         <ul class='rank'>FIRST</div> ///maybe change to ul?
-         <can only  id='name'>moe</div> //maybe all below li?
-         <div id='name'></div>
-         <div id='name'></div>
-         <div id='name' ></div>
-       </div>
+        <div id='first' class='holder'>
+          <div class='dead'><</div>
+          <button class='toRight'>></button>
+          <ul>FIRST
+            <li>moe</li>
+          </ul>
+        </div>
         <div id='second' class='holder'>
+
            <button class='toLeft'><</button>
            <button class='toRight'>></button>
-           <div class='rank'>SECOND</div>
-           <div id='name'>larry</div>
-           <div id='name'></div>
-           <div id='name'></div>
-           <div id='name'></div>
+           <ul>SECOND
+            <li>larry</li>
+            </ul>
        </div>
        <div id='third'class='holder'>
            <button class='toLeft'><</button>
            <div class='dead'>></div>
-           <div class='rank'>THIRD</div>
-           <div id='name'>curly</div>
-           <div id='name' class='selected' >lucy</div>
-           <div id='name'></div>
-           <div id='name'></div>
+           <ul>THIRD
+             <li>curly</li>
+            <li>lucy</li>
        </div>
      </div>
    <script>
-     const name = document.querySelector('#name');
+     const name = document.querySelectorAll('li');
 
-    console.log(name);//only shows moe...maybe because i used id='name'  maybe change to ul and li for namses
-     // create addEventListener name
-     name.addEventListener('click', (ev) => {
-       console.log('I clicked it!');//this works in console
-      if (!(name.getAttribute('selected'))) {
-        name.setAttribute('selected', 'selected');
-      }
-      else {
-        name.removeAttribute('selected');
-      }
-    });
+    console.log(name);
+
+    //  // create addEventListener name
+    //  name.addEventListener('click', (ev) => {
+    //    console.log('I clicked it!');//this works in console
+    //   if (!(name.getAttribute('selected'))) {
+    //     name.setAttribute('selected', 'selected');
+    //     ////????i think I modify the users list with added key and value???
+    //   }
+    //   else {
+    //     name.removeAttribute('selected');
+    //   }
+    // });
 
      const slots = ['first', 'second', 'third'];
 
@@ -130,24 +127,24 @@
        { id: 4, name: 'lucy', slot: 'third' , selected: true},
      ];
 
- // make html---this works in console.log(seeGenerateHTML)
- const generateHTML = (rows) => {
-   return rows.map(row => `
-     <div id="${ row.slot}" class="holder">
-     <div id="name>
-     ${ row.name }></div>
-     </div>)
-     `).join('');
- };
- //console.log(generateHTML(users));
- // create html with grid
- const render = ()=> {
-   const html = generateHTML(users);
-   grid.innerHTML = html;
-   };
- let data = generateHTML(users);
- //console.log(seeGenerateHTML);
- render();
+//  // make html---this works in console.log(seeGenerateHTML)
+//  const generateHTML = (rows) => {
+//    return rows.map(row => `
+//      <div id="${ row.slot}" class="holder">
+//      <div id="name>
+//      ${ row.name }></div>
+//      </div>)
+//      `).join('');
+//  };
+//  //console.log(generateHTML(users));
+//  // create html with grid
+//  const render = ()=> {
+//    const html = generateHTML(users);
+//    grid.innerHTML = html;
+//    };
+//  let data = generateHTML(users);
+//  //console.log(seeGenerateHTML);
+//  render();
 
      </script>
    </body>
