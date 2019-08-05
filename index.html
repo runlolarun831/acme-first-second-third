@@ -1,6 +1,10 @@
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+      body {
+        font-family: verdana;
+      }
       .holder {
         float: left;
         margin: 10 px;
@@ -10,13 +14,39 @@
         width: 250px;
         border:  tomato 1px solid;
       }
-      .tile {
+      .dead {
         height: 49px;
         width: 250px;
+        font-size: 16px;
+        font-weight: bold;
         text-align: center;
         line-height: 49px; /*need this to center > < text same as height*/
         vertical-align: center;
-        background-color: blue;
+        background-color:lightgray;
+        border: black 1px solid;
+        justify-content: space-around;
+      }
+      .toLeft {
+        height: 49px;
+        width: 250px;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 49px; /*need this to center > < text same as height*/
+        vertical-align: center;
+        /* background-color: blue; */
+        border: black 1px solid;
+        justify-content: space-around;
+      }
+      .toRight {
+        height: 49px;
+        width: 250px;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 49px; /*need this to center > < text same as height*/
+        vertical-align: center;
+        /* background-color: blue; */
         border: black 1px solid;
         justify-content: space-around;
       }
@@ -28,74 +58,86 @@
         width: 250px;
         /* background-color: teal; */
       }
+      #name {
+        font-size: 20px;
+        font-weight: bold;
+        height: 49px;
+        width: 250px;
+        text-align: center;
+        line-height: 49px; /*need this to center > < text same as height*/
+        vertical-align: center;
+        /* background-color: yellow ; */
+        /* border: black 1px solid; */
+        justify-content: space-around;
+      }
       .selected {
         background-color: teal;
       }
     </style>
-  </head>
-  <body>
-    <h1>Acme First, Second, Third</h1>
-    <div id='lists'>
-      <div id='first' class='holder'>
-        <div class='tile' class='toLeft'><</div>
-        <div class='tile' class='toRight'>></div>
-        <div class='rank'>FIRST</div>
-        <div class='tile' class='name'></div>
-        <div class='tile' class='name'></div>
-        <div class='tile' class='name'></div>
-        <div class='tile' class='name' class='selected'></div>
-      </div>
-       <div id='second' class='holder'>
+   </head>
+   <body>
+     <h1>Acme First, Second, Third</h1>
+     <div id='lists'>
+       <div id='first' class='holder'>
+         <div class='dead'><</div>
+         <button class='toRight'>></button>
+         <div class='rank'>FIRST</div>
+         <div id='name'>moe</div>
+         <div id='name'></div>
+         <div id='name'></div>
+         <div id='name' ></div>
+       </div>
+        <div id='second' class='holder'>
+           <button class='toLeft'><</button>
+           <button class='toRight'>></button>
+           <div class='rank'>SECOND</div>
+           <div id='name'>larry</div>
+           <div id='name'></div>
+           <div id='name'></div>
+           <div id='name'></div>
+       </div>
+       <div id='third'class='holder'>
+           <button class='toLeft'><</button>
+           <div class='dead'>></div>
+           <div class='rank'>THIRD</div>
+           <div id='name'>curly</div>
+           <div id='name' class='selected' >lucy</div>
+           <div id='name'></div>
+           <div id='name'></div>
+       </div>
+     </div>
+   <script>
 
-          <div class='tile' class='toLeft'><</div>
-          <div class='tile' class='toRight'>></div>
-          <div class='rank'>SECOND</div>
-          <div class='tile' class='name'></div>
-          <div class='tile' class='name'></div>
-          <div class='tile' class='name'></div>
-          <div class='tile' class='name'></div>
-      </div>
-      <div id='third'class='holder'>
+     const slots = ['first', 'second', 'third'];
 
-          <div class='tile' class='toLeft'><</div>
-          <div class='tile' class='toRight'>></div>
-          <div class='rank'>THIRD</div>
-          <div class='tile' class='name'></div>
-          <div class='tile' class='name'></div>
-          <div class='tile' class='name'></div>
-          <div class='tile' class='name'></div>
-      </div>
-    </div>
-  <script>
-    const slots = ['first', 'second', 'third'];
+     const users = [
+       { id: 1, name: 'moe', slot: 'first' },
+       { id: 2, name: 'larry', slot: 'second' },
+       { id: 3, name: 'curly', slot: 'third' },
+       { id: 4, name: 'lucy', slot: 'third' , selected: true},
+     ];
 
-    const users = [
-      { id: 1, name: 'moe', slot: 'first' },
-      { id: 2, name: 'larry', slot: 'second' },
-      { id: 3, name: 'curly', slot: 'third' },
-      { id: 4, name: 'lucy', slot: 'third' , selected: true},
-    ];
 
-    const array1 = [];
-    const array2 = [];
-    const array3 = [];
+ // make html---this works in console.log(seeGenerateHTML)
+ const generateHTML = (rows) => {
+   return rows.map(row => `
+     <div id="${ row.slot}" class="holder">
+     <div class="tile" class="name>
+     ${ row.name }></div>
+     </div>)
+     `).join('');
+ };
 
-    for (let i = 0; i < users.length; i++) {
-      let person = users[i];
-      if (person.slot === 'first') {
-        array1.push(person.name); // will push the person obj. just using name for testing
-      }
-      if (person.slot === 'second') {
-        array2.push(person.name);
-      }
-      if (person.slot === 'third') {
-        array3.push(person.name);
-      }
-    }
-    console.log(array1);
-    console.log(array2);
-    console.log(array3);
+ // create html with grid
+ const render = ()=> {
+   const html = generateHTML(data);
+   grid.innerHTML = html;
+   };
 
-    </script>
-  </body>
-</html>
+ let data = generateHTML(users);
+ //console.log(seeGenerateHTML);
+
+ render();
+     </script>
+   </body>
+ </html>
