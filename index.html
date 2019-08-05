@@ -81,7 +81,7 @@
         <div id='first' class='holder'>
           <div class='dead'><</div>
           <button class='toRight'>></button>
-          <ul>FIRST
+          <ul class="nameList"> FIRST
             <li>moe</li>
           </ul>
         </div>
@@ -89,7 +89,7 @@
 
            <button class='toLeft'><</button>
            <button class='toRight'>></button>
-           <ul>SECOND
+           <ul class="nameList">SECOND
             <li>larry</li>
             </ul>
        </div>
@@ -102,21 +102,22 @@
        </div>
      </div>
    <script>
-     const name = document.querySelectorAll('li');
+     //const name = document.querySelectorAll('nameList');
+     const name = document.getElementsByClassName('nameList');// want to get all names
 
     console.log(name);
 
-    //  // create addEventListener name
-    //  name.addEventListener('click', (ev) => {
-    //    console.log('I clicked it!');//this works in console
-    //   if (!(name.getAttribute('selected'))) {
+      // create addEventListener name
+      name.addEventListener('click', (ev) => {
+        console.log('I clicked it!');//this works in console
+     // if (!(name.getAttribute('selected'))) {
     //     name.setAttribute('selected', 'selected');
     //     ////????i think I modify the users list with added key and value???
     //   }
     //   else {
     //     name.removeAttribute('selected');
     //   }
-    // });
+    });
 
      const slots = ['first', 'second', 'third'];
 
