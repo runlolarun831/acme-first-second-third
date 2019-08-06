@@ -38,6 +38,9 @@
         border: black 1px solid;
         justify-content: space-around;
       }
+      .arrowSelected {
+        background-color: teal;
+      }
       .toRight {
         height: 49px;
         width: 250px;
@@ -46,7 +49,6 @@
         text-align: center;
         line-height: 49px; /*need this to center > < text same as height*/
         vertical-align: center;
-        /* background-color: blue; */
         border: black 1px solid;
         justify-content: space-around;
       }
@@ -63,12 +65,13 @@
         font-size: 20px;
         font-weight: bold;
         height: 49px;
-        width: 250px;
+        width: 200px;
         text-align: center;
         line-height: 49px; /*need this to center > < text same as height*/
         vertical-align: center;
         justify-content: space-around;
       }
+
       .selected {
         background-color: teal;
       }
@@ -79,21 +82,20 @@
      <div id='lists'>
         <div id='first' class='holder'>
           <div class='dead'><</div>
-          <button class='toRight'>></button>
+          <div class='toRight'>></div>
           <ul> FIRST
             <li>moe</li>
           </ul>
         </div>
         <div id='second' class='holder'>
-
-           <button class='toLeft'><</button>
-           <button class='toRight'>></button>
+           <div class='toLeft arrowSelected' ><</div>
+           <div class='toRight'>></div>
            <ul>SECOND
-            <!-- <li>larry</li> -->
+            <li>larry</li>
             </ul>
        </div>
        <div id='third'class='holder'>
-           <button class='toLeft'><</button>
+           <div class='toLeft'><</div>
            <div class='dead'>></div>
            <ul>THIRD
              <li>curly</li>
@@ -102,22 +104,41 @@
      </div>
    <script>
      const name = document.getElementsByTagName('li');// want to get all names
+     const toLeft = document.getElementsByClassName('toLeft');
+      console.log(toLeft);
       //map over array of name
     // create addEventListener  for name
 
-    [...name].map(name =>{
+    [...name].map((name,idx) =>{
       name.addEventListener('click', (ev) => {
         const person = ev.target;
         console.log(person);
         if (person.classList[0] !== 'selected' ) { //classList is an array
+          users[idx].selected = true;
           person.classList.add('selected');
         }
         else {
           person.classList.remove('selected');
+          users[idx].selected = false;
         }
+        //console.log(users);
       }
       );
-    });
+    } );
+
+    [...toLeft].map((toLeft ) =>{
+      toLeft.addEventListener('click', (ev) => {
+        const leftArrow = ev.target;
+        console.log(leftArrow);
+        if (leftArrow.classList[0] !== 'arrowSelected' ) {
+          leftArrow.classList.add('arrowSelected');
+        }
+        else {
+          leftArrow.classList.remove('arrowSelected');
+        }
+    }
+      );
+    } );
 
      const slots = ['first', 'second', 'third'];
 
@@ -136,12 +157,12 @@
       </ul></div>)
      `).join('');
  };
-console.log(generateHTML(users));
+//console.log(generateHTML(users));
 
- //console.log(generateHTML(users));
- // create html with grid
  const render = ()=> {
+   console.log('hi!');
    const html = generateHTML(users);
+   //console.log(html);
    name.innerHTML = html;
    };
  //let data = generateHTML(users);
