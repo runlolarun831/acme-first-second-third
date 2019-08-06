@@ -67,8 +67,6 @@
         text-align: center;
         line-height: 49px; /*need this to center > < text same as height*/
         vertical-align: center;
-        /* background-color: yellow ; */
-        /* border: black 1px solid; */
         justify-content: space-around;
       }
       .selected {
@@ -91,7 +89,7 @@
            <button class='toLeft'><</button>
            <button class='toRight'>></button>
            <ul>SECOND
-            <li>larry</li>
+            <!-- <li>larry</li> -->
             </ul>
        </div>
        <div id='third'class='holder'>
@@ -104,22 +102,22 @@
      </div>
    <script>
      const name = document.getElementsByTagName('li');// want to get all names
-
-     console.log(name); //console result: HTMLCollection(4) [li, li, li, li.selected]
+      //map over array of name
     // create addEventListener  for name
 
-    // the error i get for code below index.html:110 Uncaught TypeError: name.addEventListener is not a function
-      // name.addEventListener('click', (ev) => {
-      //   const person = ev.target;
-      //   console.log(person);
-      //   // if (!(person.getAttribute('selected'))) {
-        //   person.setAttribute('selected', 'selected');
-        // }
-        // else {
-        //   name.removeAttribute('selected');
-        // }
+    [...name].map(name =>{
+      name.addEventListener('click', (ev) => {
+        const person = ev.target;
+        console.log(person);
+        if (person.classList[0] !== 'selected' ) { //classList is an array
+          person.classList.add('selected');
+        }
+        else {
+          person.classList.remove('selected');
+        }
       }
       );
+    });
 
      const slots = ['first', 'second', 'third'];
 
@@ -140,26 +138,15 @@
  };
 console.log(generateHTML(users));
 
-//old make html---this works in console.log(seeGenerateHTML)
-//  const generateHTML = (rows) => {
-//    return rows.map(row => `
-//      <div id="${ row.slot}" class="holder">
-//      <div id="name>
-//      ${ row.name }></div>
-//      </div>)
-//      `).join('');
-//  };
-
-
-//  //console.log(generateHTML(users));
-//  // create html with grid
-//  const render = ()=> {
-//    const html = generateHTML(users);
-//    grid.innerHTML = html;
-//    };
-//  let data = generateHTML(users);
-//  //console.log(seeGenerateHTML);
-//  render();
+ //console.log(generateHTML(users));
+ // create html with grid
+ const render = ()=> {
+   const html = generateHTML(users);
+   name.innerHTML = html;
+   };
+ //let data = generateHTML(users);
+ //console.log(seeGenerateHTML);
+ render();
 
      </script>
    </body>
