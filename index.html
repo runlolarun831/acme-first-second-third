@@ -107,17 +107,17 @@
 
      console.log(name); //console result: HTMLCollection(4) [li, li, li, li.selected]
     // create addEventListener  for name
-      name.addEventListener('click', (ev) => {
-        const person = ev.target;
-        console.log(person);
-        if (!(person.getAttribute('selected'))) {
-          person.setAttribute('selected', 'selected');
-          //????i think I modify the users array with added key and value???
-        }
-        else {
-          name.removeAttribute('selected');
-          //????i think I modify the users list by removing key 'selected' from users array
-        }
+
+    // the error i get for code below index.html:110 Uncaught TypeError: name.addEventListener is not a function
+      // name.addEventListener('click', (ev) => {
+      //   const person = ev.target;
+      //   console.log(person);
+      //   // if (!(person.getAttribute('selected'))) {
+        //   person.setAttribute('selected', 'selected');
+        // }
+        // else {
+        //   name.removeAttribute('selected');
+        // }
       }
       );
 
@@ -130,7 +130,17 @@
        { id: 4, name: 'lucy', slot: 'third' , selected: true},
      ];
 
-//  // make html---this works in console.log(seeGenerateHTML)
+  //new  make html---redo since you changed html hardcode ul and li
+  const generateHTML = (rows) => {
+   return rows.map(row => `
+     <div id="${ row.slot}" class="holder">
+     <ul><li>${ row.name}</li>
+      </ul></div>)
+     `).join('');
+ };
+console.log(generateHTML(users));
+
+//old make html---this works in console.log(seeGenerateHTML)
 //  const generateHTML = (rows) => {
 //    return rows.map(row => `
 //      <div id="${ row.slot}" class="holder">
@@ -139,6 +149,8 @@
 //      </div>)
 //      `).join('');
 //  };
+
+
 //  //console.log(generateHTML(users));
 //  // create html with grid
 //  const render = ()=> {
