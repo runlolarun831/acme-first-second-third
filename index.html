@@ -105,6 +105,19 @@
      const name = document.getElementsByTagName('li');// want to get all names
      const toLeft = document.getElementsByClassName('toLeft');
      const toRight = document.getElementsByClassName('toRight');
+
+
+     const slots = ['first', 'second', 'third'];
+
+     const users = [
+       { id: 1, name: 'moe', slot: 'first' },
+       { id: 2, name: 'larry', slot: 'second' },
+       { id: 3, name: 'curly', slot: 'third' },
+       { id: 4, name: 'lucy', slot: 'third' , selected: true},
+     ];
+
+
+
       //console.log(toLeft);
       //map over array of name
     // create addEventListener  for name
@@ -138,11 +151,17 @@
             console.log('i = ' + i);
             let person = users[i];
             if(person.slot === arrowHolderIdL && person.selected === true) {
-              holderUsersL.push(person);
+              //holderUsers.push(person);//test feature
+              for(let j= 0; j <slots.length; j++) {
+                console.log('this is slots[j - 1]= ', slots[j - 1]);
+                if(slots[j] === person.slot) {
+                  person.slot = slots[ j - 1 ];
+                  break;
+                }
+              }
             }
           }
-          console.log(holderUsersL);//i get object w/
-
+          console.log(users);//
       }
       );
     } );
@@ -155,30 +174,25 @@
         console.log(thing);//<div id='first' class=holder
         let arrowHolderId = thing.getAttribute('id');
         console.log(arrowHolderId);//'first
-          const holderUsers =[];
+          //const holderUsers =[];//test feature
           for (let i = 0; i <users.length; i++) {
             let person = users[i];
             console.log('i = ' + i);
             if(person.slot === arrowHolderId && person.selected === true) {
-              holderUsers.push(person);
+              //holderUsers.push(person);//test feature
+              for(let j= 0; j <slots.length; j++) {
+                console.log('this is slots[j + 1]= ',  slots[j + 1]);
+                if(slots[j] === person.slot) {
+                  person.slot = slots[ j + 1 ];
+                  break;
+                }
+              }
             }
           }
-          console.log(holderUsers);//i get object w/ moe!!!!
-
+          console.log(users);//
       }
       );
     } );
-
-
-
-     const slots = ['first', 'second', 'third'];
-
-     const users = [
-       { id: 1, name: 'moe', slot: 'first' },
-       { id: 2, name: 'larry', slot: 'second' },
-       { id: 3, name: 'curly', slot: 'third' },
-       { id: 4, name: 'lucy', slot: 'third' , selected: true},
-     ];
 
   //new  make html---redo since you changed html hardcode ul and li
   const generateHTML = (rows) => {
