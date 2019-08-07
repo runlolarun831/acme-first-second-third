@@ -1,11 +1,15 @@
  //new  make html---redo since you changed html hardcode ul and li
+//think that I'm going to need to make 3 different generateHtmls
+// one for each toLeft, toRight, and names
+need to put in names ifs
 
- const generateHTML = (rows) => {
-   return rows.map(row => `
-     <div id="${ row.slot}" class="holder">
-     <ul><li>${ row.name}</li></ul></div>)
-     `).join('');
- };
+const generateHTML = (rows) => {
+  return rows.map(row => `
+    <div id="${ row.slot}" class="holder">
+    <ul><li class="selected">${ row.name}</li>
+     </ul></div>)
+    `).join('');
+};
 
 
 

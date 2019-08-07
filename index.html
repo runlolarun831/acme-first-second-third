@@ -38,7 +38,6 @@
         border: black 1px solid;
         justify-content: space-around;
       }
-
       .toRight {
         height: 49px;
         width: 250px;
@@ -52,12 +51,10 @@
         justify-content: space-around;
       }
       .rank {
-
         font-size: 35px;
         font-weight: bold;
         height: 100px;
         width: 250px;
-
       }
       li {
         list-style-type: none;
@@ -70,7 +67,6 @@
         vertical-align: center;
         justify-content: space-around;
       }
-
       .selected {
         background-color: teal;
       }
@@ -105,23 +101,16 @@
      const name = document.getElementsByTagName('li');// want to get all names
      const toLeft = document.getElementsByClassName('toLeft');
      const toRight = document.getElementsByClassName('toRight');
-
-
      const slots = ['first', 'second', 'third'];
-
      const users = [
        { id: 1, name: 'moe', slot: 'first' },
        { id: 2, name: 'larry', slot: 'second' },
        { id: 3, name: 'curly', slot: 'third' },
        { id: 4, name: 'lucy', slot: 'third' , selected: true},
      ];
-
-
-
       //console.log(toLeft);
       //map over array of name
     // create addEventListener  for name
-
     [...name].map((name,idx) =>{
       name.addEventListener('click', (ev) => {
         const person = ev.target;
@@ -129,16 +118,26 @@
         if (person.classList[0] !== 'selected' ) { //classList is an array
           users[idx].selected = true;
           person.classList.add('selected');
+          ///attempting to generate updated names after click to rebuild single <div> of name that is selected
+
+          // const generateHTML =
+          // return`
+          //     <div id="${person.slot}" class="holder">
+          //     <ul><li class="selected">${ person.name}</li>
+          //     </ul></div>)
+          //   `).join('');
+          //};
+          //console.log(generateHTML(person));
         }
         else {
           person.classList.remove('selected');
           users[idx].selected = false;
         }
         //console.log(users);
+        render();///for now testing
       }
       );
     } );
-
     [...toLeft].map((toLeft ) =>{
       toLeft.addEventListener('click', (ev) => {
         const leftArrow = ev.target;
@@ -161,11 +160,11 @@
               }
             }
           }
+          render();
           console.log(users);//
       }
       );
     } );
-
     [...toRight].map((toRight ) =>{
       toRight.addEventListener('click', (ev) => {
         const rightArrow = ev.target;//use moe in first
@@ -189,31 +188,31 @@
               }
             }
           }
-          console.log(users);//
+          //console.log(users);//
       }
       );
     } );
-
   //new  make html---redo since you changed html hardcode ul and li
+
+  //<li class issue  I don't want everyname to be selected
   const generateHTML = (rows) => {
    return rows.map(row => `
      <div id="${ row.slot}" class="holder">
-     <ul><li>${ row.name}</li>
+     <ul><li class="${ row.selected === true ? 'selected' : '' }">${ row.name}</li>
       </ul></div>)
      `).join('');
  };
-//console.log(generateHTML(users));
 
+// //console.log(generateHTML(users));
  const render = ()=> {
    console.log('hi!');
    const html = generateHTML(users);
-   //console.log(html);
+   console.log('this is html ' ,html);
    name.innerHTML = html;
    };
  //let data = generateHTML(users);
  //console.log(seeGenerateHTML);
  render();
-
      </script>
    </body>
  </html>
