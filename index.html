@@ -136,7 +136,7 @@
           const holderUsersL =[];
           for (let i = 0; i <users.length; i++) {
             let person = users[i];
-            if(person.slot === arrowHolderIdL) {
+            if(person.slot === arrowHolderIdL && person.selected === 'true') {
               holderUsersL.push(person);
             }
           }
@@ -157,7 +157,7 @@
           const holderUsers =[];
           for (let i = 0; i <users.length; i++) {
             let person = users[i];
-            if(person.slot === arrowHolderId) {
+            if(person.slot === arrowHolderId && person.selected === 'true') {
               holderUsers.push(person);
             }
           }
