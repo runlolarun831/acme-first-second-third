@@ -105,7 +105,8 @@
    <script>
      const name = document.getElementsByTagName('li');// want to get all names
      const toLeft = document.getElementsByClassName('toLeft');
-      console.log(toLeft);
+     const toRight = document.getElementsByClassName('toRight');
+      //console.log(toLeft);
       //map over array of name
     // create addEventListener  for name
 
@@ -131,14 +132,24 @@
         const leftArrow = ev.target;
         console.log(leftArrow);
         if (leftArrow.classList[0] !== 'arrowSelected' ) {
-          leftArrow.classList.add('arrowSelected');
+          leftArrow.classList.toggle('arrowSelected');
         }
-        else {
-          leftArrow.classList.remove('arrowSelected');
-        }
-    }
+      }
       );
     } );
+
+    [...toRight].map((toRight ) =>{
+      toRight.addEventListener('click', (ev) => {
+        const rightArrow = ev.target;
+        console.log(rightArrow);
+        if (rightArrow.classList[0] !== 'arrowSelected' ) {
+          rightArrow.classList.toggle('arrowSelected');
+        }
+      }
+      );
+    } );
+
+
 
      const slots = ['first', 'second', 'third'];
 
