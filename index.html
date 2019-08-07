@@ -34,13 +34,11 @@
         text-align: center;
         line-height: 49px; /*need this to center > < text same as height*/
         vertical-align: center;
-        /* background-color: blue; */
+        background-color: teal;
         border: black 1px solid;
         justify-content: space-around;
       }
-      .arrowSelected {
-        background-color: teal;
-      }
+
       .toRight {
         height: 49px;
         width: 250px;
@@ -50,6 +48,7 @@
         line-height: 49px; /*need this to center > < text same as height*/
         vertical-align: center;
         border: black 1px solid;
+        background-color: teal;
         justify-content: space-around;
       }
       .rank {
@@ -58,7 +57,7 @@
         font-weight: bold;
         height: 100px;
         width: 250px;
-        /* background-color: teal; */
+
       }
       li {
         list-style-type: none;
@@ -130,10 +129,7 @@
     [...toLeft].map((toLeft ) =>{
       toLeft.addEventListener('click', (ev) => {
         const leftArrow = ev.target;
-        console.log(leftArrow);
-        if (leftArrow.classList[0] !== 'arrowSelected' ) {
-          leftArrow.classList.toggle('arrowSelected');
-        }
+        //console.log('leftArrow= ' + leftArrow);
       }
       );
     } );
@@ -141,10 +137,9 @@
     [...toRight].map((toRight ) =>{
       toRight.addEventListener('click', (ev) => {
         const rightArrow = ev.target;
-        console.log(rightArrow);
-        if (rightArrow.classList[0] !== 'arrowSelected' ) {
-          rightArrow.classList.toggle('arrowSelected');
-        }
+        console.log('rightArrow= ' + rightArrow);
+        const thing = rightArrow.parentNode;
+        console.log(thing);
       }
       );
     } );
