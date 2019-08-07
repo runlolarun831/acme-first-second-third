@@ -129,17 +129,40 @@
     [...toLeft].map((toLeft ) =>{
       toLeft.addEventListener('click', (ev) => {
         const leftArrow = ev.target;
-        //console.log('leftArrow= ' + leftArrow);
+        const thingL = leftArrow.parentNode;
+        console.log(thingL);//<div id='third' class=holder
+        let arrowHolderIdL = thingL.getAttribute('id');
+        console.log(arrowHolderIdL);//'third'
+          const holderUsersL =[];
+          for (let i = 0; i <users.length; i++) {
+            let person = users[i];
+            if(person.slot === arrowHolderIdL) {
+              holderUsersL.push(person);
+            }
+          }
+          console.log(holderUsersL);//i get object w/
+
       }
       );
     } );
 
     [...toRight].map((toRight ) =>{
       toRight.addEventListener('click', (ev) => {
-        const rightArrow = ev.target;
+        const rightArrow = ev.target;//use moe in first
         console.log('rightArrow= ' + rightArrow);
         const thing = rightArrow.parentNode;
-        console.log(thing);
+        console.log(thing);//<div id='first' class=holder
+        let arrowHolderId = thing.getAttribute('id');
+        console.log(arrowHolderId);//'first
+          const holderUsers =[];
+          for (let i = 0; i <users.length; i++) {
+            let person = users[i];
+            if(person.slot === arrowHolderId) {
+              holderUsers.push(person);
+            }
+          }
+          console.log(holderUsers);//i get object w/ moe!!!!
+
       }
       );
     } );
