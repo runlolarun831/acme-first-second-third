@@ -79,22 +79,22 @@
           <div class='dead'><</div>
           <div class='toRight'>></div>
           <ul> FIRST
-            <!-- <li>moe</li> -->
+            <li>moe</li>
           </ul>
         </div>
         <div id='second' class='holder'>
            <div class='toLeft arrowSelected' ><</div>
            <div class='toRight'>></div>
            <ul>SECOND
-            <!-- <li>larry</li> -->
+            <li>larry</li>
             </ul>
        </div>
        <div id='third'class='holder'>
            <div class='toLeft'><</div>
            <div class='dead'>></div>
            <ul>THIRD
-             <!-- <li>curly</li> -->
-             <!-- <li class='selected'>lucy</li> -->
+             <li>curly</li>
+             <li class='selected'>lucy</li>
        </div>
      </div>
    <script>
@@ -108,7 +108,6 @@
        { id: 3, name: 'curly', slot: 'third' },
        { id: 4, name: 'lucy', slot: 'third' , selected: true},
      ];
-
       //console.log(toLeft);
       //map over array of name
     // create addEventListener  for name
@@ -120,6 +119,14 @@
           users[idx].selected = true;
           person.classList.add('selected');
           ///attempting to generate updated names after click to rebuild single <div> of name that is selected
+          // const generateHTML =
+          // return`
+          //     <div id="${person.slot}" class="holder">
+          //     <ul><li class="selected">${ person.name}</li>
+          //     </ul></div>)
+          //   `).join('');
+          //};
+          //console.log(generateHTML(person));
         }
         else {
           person.classList.remove('selected');
@@ -179,15 +186,12 @@
                 }
               }
             }
-            render();
           }
-          //render();
           //console.log(users);//
       }
       );
     } );
   //new  make html---redo since you changed html hardcode ul and li
-
   //<li class issue  I don't want everyname to be selected
   const generateHTML = (rows) => {
    return rows.map(row => `
@@ -196,7 +200,6 @@
       </ul></div>)
      `).join('');
  };
-
 // //console.log(generateHTML(users));
  const render = ()=> {
    console.log('hi!');
@@ -206,7 +209,7 @@
    };
  //let data = generateHTML(users);
  //console.log(seeGenerateHTML);
- render();
+ //render();
      </script>
    </body>
  </html>
